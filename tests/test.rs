@@ -118,7 +118,7 @@ fn base64_to_image(extension : &str) {
         Err(why) => panic!("couldn't read {}", why),
         Ok(_) => {},
     }
-    let img = image_base64::from_base64(base64);
+    let img = image_base64::from_base64(base64).unwrap();
     let mut output = File::create(&Path::new(&format!("output{}{}.{}", MAIN_SEPARATOR, FILE_NAME, extension))).unwrap();
     output.write_all(img.as_slice()).unwrap();
 }
